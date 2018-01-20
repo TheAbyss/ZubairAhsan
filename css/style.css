@@ -7,7 +7,7 @@
 }
 /* =======================================================
 *
-* 	Template Style 
+* 	Template Style
 *
 * ======================================================= */
 body {
@@ -66,7 +66,7 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #000;
   font-family: "Work Sans", Arial, sans-serif;
   font-weight: 400;
-  margin: 0 0 20px 0;
+  /* margin: 0 0 20px 0; */
 }
 
 ::-webkit-selection {
@@ -364,18 +364,18 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 #gtco-counter {
-  height: 500px;
+  /* height: 500px; */
 }
 #gtco-counter .display-t,
 #gtco-counter .display-tc {
-  height: 500px;
+  /* height: 500px; */
   display: table;
   width: 100%;
 }
 @media screen and (max-width: 768px) {
   #gtco-counter {
-    height: inherit;
-    padding: 7em 0;
+    /* height: inherit; */
+    /* padding: 1em; */
   }
   #gtco-counter .display-t,
   #gtco-counter .display-tc {
@@ -543,7 +543,7 @@ form label {
 }
 #gtco-counter .counter {
   font-size: 50px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   color: #fff;
   font-weight: 100;
   display: block;
@@ -566,7 +566,7 @@ form label {
   -webkit-box-shadow: 0px 14px 30px -15px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 14px 30px -15px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 14px 30px -15px rgba(0, 0, 0, 0.75);
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 #gtco-counter .icon i {
   height: 70px;
@@ -612,7 +612,7 @@ form label {
   padding-right: 20px;
   float: left;
   width: 100%;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
 }
 @media screen and (max-width: 768px) {
   .feature-center {
@@ -625,7 +625,7 @@ form label {
   background: #efefef;
   display: table;
   text-align: center;
-  margin: 0 auto 30px auto;
+  margin: 0 auto 0px auto;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -640,7 +640,7 @@ form label {
   color: #52d3aa;
 }
 .feature-center p, .feature-center h3 {
-  margin-bottom: 30px;
+  /* margin-top: 30px; */
 }
 .feature-center h3 {
   text-transform: uppercase;
