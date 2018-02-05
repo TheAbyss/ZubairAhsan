@@ -1,7 +1,7 @@
-window.onload=function() {
+$(document).ready(function() {
   // Month,Day,Year,Hour,Minute,Second
   aliveTime('october,27,1988,00:07:00'); // ****** Change this line!
-}
+});
 function aliveTime(countTo) {
   now = new Date();
   countTo = new Date(countTo);
