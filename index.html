@@ -41,6 +41,8 @@
 	<meta name="twitter:url" content="https://zubairahsan.com">
 	<meta name="twitter:image" content="https://scontent.ftpe8-1.fna.fbcdn.net/v/t31.0-8/16113442_10208029127062930_7905951965942986014_o.jpg?oh=40a614d49f1abe48282cdd7949959407&oe=5AF29D56">
 
+	<!-- jQuery -->
+	<script src="/js/jquery.min.js"></script>
 
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
@@ -56,21 +58,30 @@
 	<link rel="stylesheet" href="css/owl.carousel.min.css">
 	<link rel="stylesheet" href="css/owl.theme.default.min.css">
 
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
-
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 
-		<script src="js/countuplife.js"></script>
+	<script src="js/countuplife.js"></script>
+
+
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+
+
+	<!-- Instagram Feed  -->
+	<script type="text/javascript" src="js/instafeed.min.js"></script>
+
+	<!-- Instagram Feed style  -->
+	<link rel="stylesheet" href="css/instafeed_infinity_scroll.css">
+	<link rel="stylesheet" href="css/instafeed_user_profile_min.css">
 
 	</head>
 	<body>
 
 	<div class="gtco-loader"></div>
-
-	<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:url(images/landing_page_1.jpg);">
+	<div id="gtco-header" class="gtco-cover" role="banner" style="background-image:url(images/landing_page_1.jpg);">
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center">
@@ -93,50 +104,137 @@
 				</div>
 			</div>
 		</div>
-	</header>
-	<div id="gtco-features">
-		<div class="gtco-container">
-			<div class="row">
-				<!-- <div class="col-md-4 col-sm-4">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i class="icon-eye"></i>
-						</span>
-						<h3>Retina Ready</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-						<p><a href="#" class="btn btn-primary">Learn More</a></p>
-					</div>
-				</div> -->
-				<div class="col-md-12 col-sm-12">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i class="icon-eye"></i>
-						</span>
-						<h3>Motto</h3>
-						<p>To Live is To Travel</p>
-						<!-- <p><a href="#" class="btn btn-primary">Learn More</a></p> -->
-					</div>
-				</div>
-				<!-- <div class="col-md-4 col-sm-4">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i class="icon-power"></i>
-						</span>
-						<h3>Web Starter</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-						<p><a href="#" class="btn btn-primary">Learn More</a></p>
-					</div>
-				</div> -->
-			</div>
-		</div>
 	</div>
+	<div class="instagram-profile">
+		<div id='profile_picture'></div>
+		<div id='profile_meta'>
+			<ul class="meta">
+				<li>
+					<span class="count post-count"></span>
+					<span class="title">posts</span>
+				</li>
+				<li>
+					<span class="count follower-count"></span>
+					<span class="title">followers</span>
+				</li>
+				<li>
+					<span class="count following-count"></span>
+					<span class="title">following</span>
+				</li>
+			</ul>
+		</div>
+		<div id='instafeed'></div>
+		<button id="btn-instafeed-load" class="btn">Load more</button>
+	</div>
+	<script type="text/javascript">
+			var userProfile = new Instafeed({
+				get: "user",
+				userId: 194846353,
+				accessToken: "194846353.7974126.02d2a1000aea4b6099e6b9073b3a8be2",
+				resolution: 'standard_resolution',
+				useHttp: "true",
+				limit: 1,
+				template:  '<div class="instagram-profile-container">'+
+													'<img src="{{model.user.profile_picture}}" class="avatar">'+
+													'<div class="user-container">'+
+														'<p class="name">Follow Instagram</p>'+
+														'<p class="username"><a href="http://instagram.com/{{model.user.username}}" target="_blank">@{{model.user.username}}</a></p>'+
+													'</div>'+
+												'</div>',
+				target: "profile_picture",
+				before: function(){
+					// get user data
+					var url = 'https://api.instagram.com/v1/users/' + this.options.userId + '/?access_token=' + this.options.accessToken;
+					$.ajax({
+						method: 'GET',
+						url: url,
+						dataType: 'jsonp',
+						jsonp: 'callback',
+						success: function (response) {
+							// currently being replaced on each 'load more' button click
+							$('.post-count').html(response.data.counts.media);
+							$('.follower-count').html(response.data.counts.follows);
+							$('.following-count').html(response.data.counts.followed_by);
+							$('.following-count').html(response.data.counts.followed_by);
+						}
+					});
+				}
+			});
+			userProfile.run();
+	</script>
+	<script type="text/javascript">
+			var galleryFeed = new Instafeed({
+				get: "user",
+				userId: 194846353,
+				accessToken: "194846353.7974126.02d2a1000aea4b6099e6b9073b3a8be2",
+				resolution: 'standard_resolution',
+				sortBy: "most-liked",
+				useHttp: "true",
+				limit: 9,
+				template: '<a href="{{link}}" target="_blank" style="background: white url({{image}}); background-size: cover;"></a>',
+				target: "instafeed",
+				// before: function(){
+				// 	// get user data
+				// 	var url = 'https://api.instagram.com/v1/users/' + this.options.userId + '/?access_token=' + this.options.accessToken;
+				// 	$.ajax({
+				// 		method: 'GET',
+				// 		url: url,
+				// 		dataType: 'jsonp',
+				// 		jsonp: 'callback',
+				// 		success: function (response) {
+				// 			// currently being replaced on each 'load more' button click
+				// 			$('.post-count').html(response.data.counts.media);
+				// 			$('.follower-count').html(response.data.counts.follows);
+				// 			$('.following-count').html(response.data.counts.followed_by);
+				// 		}
+				// 	});
+				// },
+				after: function() {
+					// disable button if no more results to load
+					if (!this.hasNext()) {
+						btnInstafeedLoad.setAttribute('disabled', 'disabled');
+					}
+				},
+			});
+			galleryFeed.run();
+
+			var btnInstafeedLoad = document.getElementById("btn-instafeed-load");
+			btnInstafeedLoad.addEventListener("click", function() {
+				galleryFeed.next()
+			});
+	</script>
+
+	<!-- <div id="instafeed-gallery-feed" class="gallery row no-gutter"></div>
+	<button id="btn-instafeed-load" class="btn">Load more</button>
+	<script type="text/javascript">
+			var galleryFeed = new Instafeed({
+				get: "user",
+					userId: 194846353,
+					accessToken: "194846353.7974126.02d2a1000aea4b6099e6b9073b3a8be2",
+				resolution: "standard_resolution",
+				useHttp: "true",
+				limit: 6,
+				template: '<div class="col-xs-12 col-sm-6 col-md-4"><a href="{{image}}"><div class="img-featured-container"><div class="img-backdrop"></div><div class="description-container"><p class="caption">{{caption}}</p><span class="likes"><i class="icon ion-heart"></i> {{likes}}</span><span class="comments"><i class="icon ion-chatbubble"></i> {{comments}}</span></div><img src="{{image}}" class="img-responsive"></div></a></div>',
+				target: "instafeed-gallery-feed",
+				after: function() {
+						// disable button if no more results to load
+						if (!this.hasNext()) {
+							btnInstafeedLoad.setAttribute('disabled', 'disabled');
+						}
+					},
+			});
+			galleryFeed.run();
+
+			var btnInstafeedLoad = document.getElementById("btn-instafeed-load");
+			btnInstafeedLoad.addEventListener("click", function() {
+				galleryFeed.next()
+			});
+	</script> -->
 
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
 
-	<!-- jQuery -->
-	<script src="/js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
 	<script src="/js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->

@@ -1,0 +1,65 @@
+.instagram-profile p {
+  margin: 0;
+}
+.instagram-profile a {
+  color: inherit;
+}
+.instagram-profile a:hover {
+  color: #aaa;
+  text-decoration: none;
+}
+.instagram-profile .instagram-profile-container {
+  text-align: center;
+  padding: 30px 30px 0;
+}
+.instagram-profile .instagram-profile-container .avatar {
+  width: 100%;
+  max-width: 120px;
+  border-radius: 100%;
+  margin: 0 auto;
+  display: block;
+}
+.instagram-profile .instagram-profile-container .user-container {
+  margin-top: 20px;
+}
+.instagram-profile .instagram-profile-container .name {
+  font-size: 20px;
+  font-weight: 600;
+}
+.instagram-profile .instagram-profile-container .username {
+  color: #bbb;
+  font-size: 16px;
+}
+.instagram-profile .meta {
+  width: 100%;
+  margin: 0;
+  padding: 30px;
+  display: table;
+}
+.instagram-profile .meta li {
+  text-align: center;
+  width: 33%;
+  display: table-cell;
+}
+.instagram-profile .meta span {
+  display: block;
+}
+.instagram-profile .meta .count {
+  font-size: 20px;
+  font-weight: 600;
+}
+.instagram-profile .meta .title {
+  color: #bbb;
+  font-size: 16px;
+}
+
+/* load more button */
+#btn-instafeed-load {
+  color: #fff;
+  background: #26a3ff;
+  font-size: 16px;
+  margin: 20px auto;
+  padding: 8px 40px;
+  display: block;
+  border: none;
+}

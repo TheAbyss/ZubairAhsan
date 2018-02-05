@@ -1,0 +1,148 @@
+#instafeed {
+    margin: 0 0.5em;
+}
+
+.content{
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+#instafeed a {
+    margin: 0.5em 0.5em;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    width: calc(100%/4 - 1em);
+    padding: 5px;
+    border-radius: 2px;
+    transition: all .3s;
+    height: 300px;
+    background-size: cover;
+}
+
+#instafeed a:hover{
+  opacity: .6;
+}
+
+#instafeed .info {
+    height: 120px;
+    font-size: .8em;
+    overflow-y: scroll;
+    display: block;
+    width: 100%;
+    margin: 15px 0;
+}
+
+#more{
+  display: inline-block;
+  border: 1px solid #5188bb;
+  margin: 15px;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  color: #5188bb;
+  font-size: .7em;
+  font-family: 'Lato', sans-serif;
+  line-height: 6.6em;
+  text-align: center;
+}
+
+#instafeed .info p {
+    font-size: 0.8em;
+    line-height: 1.45;
+    font-weight: bolder;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-bottom: 1em;
+}
+
+#instafeed .info .location {
+    color: #777;
+    font-weight: 400;
+}
+
+#instafeed .info [class*="icon-heart"]:before {
+    color: hotpink;
+}
+
+#instafeed .info [class*="icon-chat"]:before {
+    color: #3498db;
+}
+
+#instafeed .info [class*="icon-comment"]:before {
+    color: #ccc;
+}
+
+#instafeed .info [class*="icon-location"]:before {
+    color: #ccc;
+}
+
+#instafeed .info [class*="icon-"]:before {
+    margin-right: 0.5em;
+    vertical-align: middle;
+}
+
+#instafeed .info ul {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+#instafeed .info ul li {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    width: calc(100% / 2 - 2em);
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    font-size: 0.8em;
+    text-align: center;
+    padding: 1em 0;
+    border-top: 1px solid #eaeaea;
+}
+
+#instafeed .info ul li:hover {
+    background: #f5f5f5;
+}
+
+#instafeed .info ul li:first-child {
+    border-right: 1px solid #eaeaea;
+}
+
+#instafeed img {
+    display: inline;
+    margin-bottom: -3px;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+
+
+@media screen and (min-width: 1400px) {
+    #instafeed a {
+        width: calc(100%/3 - 1em);
+    }
+}
+@media screen and (max-width: 1200px) {
+    #instafeed a {
+        width: calc(100%/3 - 1em);
+    }
+}
+@media screen and (max-width: 800px) {
+    #instafeed a {
+        width: calc(100%/2 - 1em);
+    }
+}
+@media screen and (max-width: 480px) {
+    #instafeed a {
+        width: calc(100% - 1em);
+    }
+}
